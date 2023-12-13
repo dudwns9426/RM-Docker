@@ -43,7 +43,12 @@ jobs:
   deploy:
     needs: build
     runs-on: [aws-ec2]
-    steps:        
+    steps:
+
+    - name: Set up Docker
+      uses: docker/setup-docker@v2
+      with:
+        docker-version: '24.0.7'
 
     - name: Pull Image from docker hub
       run: docker pull dudwns9426/rmsoft-image:latest
