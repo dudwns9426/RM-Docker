@@ -35,10 +35,10 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       
     - name: Build docker image
-      run: docker build -t RMSoft-image .
+      run: docker build -t rmsoft-image .
       
     - name: Publish image to docker hub
-      run: docker push RMSoft-image:latest
+      run: docker push rmsoft-image:latest
       
   deploy:
     needs: build
@@ -46,10 +46,10 @@ jobs:
     steps:        
 
     - name: Pull Image from docker hub
-      run: docker pull RMSoft-image:latest
+      run: docker pull rmsoft-image:latest
       
     - name: Delete old container
-      run: docker rm -f RMSoft-container  
+      run: docker rm -f rmsoft-container  
       
     - name: Run docker container
-      run: docker run -d -p 8088:8088 --name RMSoft-container RMSoft-image
+      run: docker run -d -p 8088:8088 --name rmsoft-container rmsoft-image
