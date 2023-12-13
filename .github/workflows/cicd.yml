@@ -35,10 +35,10 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       
     - name: Build docker image
-      run: docker build -t rmsoft-image .
+      run: docker build -t dudwns9426/rmsoft-image .
       
     - name: Publish image to docker hub
-      run: docker push rmsoft-image:latest
+      run: docker push dudwns9426/rmsoft-image:latest
       
   deploy:
     needs: build
